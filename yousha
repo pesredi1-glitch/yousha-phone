@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <title>Yousha - إصلاح الهواتف</title>
+  <meta name="description" content="Yousha موقع لإدارة وتتبع طلبات إصلاح الهواتف. زيد طلب جديد، شوف حالة الصيانة، ونظم خدمة الزبناء بسهولة." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f4f6;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #2563eb;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .container {
+      max-width: 900px;
+      margin: 20px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    h2 {
+      margin-top: 0;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background: #2563eb;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover {
+      background: #1e40af;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background: #f1f5f9;
+    }
+    .status {
+      padding: 5px 10px;
+      border-radius: 20px;
+      background: #fde68a;
+      color: #92400e;
+      font-size: 12px;
+    }
+    footer {
+      text-align: center;
+      margin-top: 20px;
+      color: #555;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Yousha</h1>
+    <p>نظام إدارة إصلاح الهواتف الذكية</p>
+  </header>
+
+  <div class="container">
+    <h2>إضافة طلب جديد</h2>
+
+    <input type="text" id="customer" placeholder="اسم الزبون" />
+    <input type="text" id="phone" placeholder="نوع الهاتف (iPhone, Samsung...)" />
+    <input type="text" id="issue" placeholder="المشكل (شاشة، بطارية...)" />
+    <input type="text" id="location" placeholder="المدينة / العنوان" />
+
+    <button onclick="addRow()">إضافة الطلب</button>
+
+    <h2>طلبات الإصلاح</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>الزبون</th>
+          <th>الهاتف</th>
+          <th>المشكل</th>
+          <th>المكان</th>
+          <th>الحالة</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody">
+        <!-- الطلبات غادي يبانوا هنا -->
+      </tbody>
+    </table>
+  </div>
+
+  <footer>
+    © 2026 Yousha - Phone Repair System
+  </footer>
+
+  <script>
+    function addRow() {
+      const customer = document.getElementById("customer").value;
+      const phone = document.getElementById("phone").value;
+      const issue = document.getElementById("issue").value;
+      const location = document.getElementById("location").value;
+
+      if (!customer || !phone || !issue) {
+        alert("عافاك عمر على الأقل الاسم، الهاتف، والمشكل");
+        return;
+      }
+
+      const table = document.getElementById("tableBody");
+      const row = table.insertRow();
+
+      row.innerHTML = `
+        <td>${customer}</td>
+        <td>${phone}</td>
+        <td>${issue}</td>
+        <td>${location}</td>
+        <td><span class="status">Pending</span></td>
+      `;
+
+      document.getElementById("customer").value = "";
+      document.getElementById("phone").value = "";
+      document.getElementById("issue").value = "";
+      document.getElementById("location").value = "";
+    }
+  </script>
+
+</body>
+</html>
